@@ -1,4 +1,4 @@
-package GDSA
+package org.bom4v.ti
 
 import com.spotify.scio._
 
@@ -27,3 +27,5 @@ object WordCount {
     val result = sc.close().waitUntilFinish()
   }
 }
+
+

@@ -6,9 +6,28 @@ val beamVersion = "2.11.0"
 val scalaMacrosVersion = "2.1.1"
 
 lazy val commonSettings = Defaults.coreDefaultSettings ++ Seq(
-  organization := "GDSA",
+  organization := "org.bom4v.ti",
+  organizationName := "Business Object Models for Verticals (BOM4V)",
+  organizationHomepage := Some(url("http://github.com/bom4v")),
+  homepage := Some(url("https://github.com/bom4v/induction-beam-scio")),
+  startYear := Some(2019),
+  licenses += "Apache-2.0" -> url("https://www.apache.org/licenses/LICENSE-2.0"),
+  scmInfo := Some(
+    ScmInfo(
+      url("https://github.com/bom4v/induction-beam-scio"),
+      "https://github.com/bom4v/induction-beam-scio.git"
+    )
+  ),
+  developers := List(
+    Developer(
+      id    = "denis.arnaud",
+      name  = "Denis Arnaud",
+      email = "denis.arnaud_ossrh@m4x.org",
+      url   = url("https://github.com/denisarnaud")
+    )
+  ),
   // Semantic versioning http://semver.org/
-  version := "0.1.0-SNAPSHOT",
+  version := "0.0.1",
   scalaVersion := "2.12.8",
   scalacOptions ++= Seq("-target:jvm-1.8",
                         "-deprecation",
@@ -29,9 +48,8 @@ lazy val root: Project = project
   .settings(commonSettings)
   .settings(macroSettings)
   .settings(
-    name := "word-count",
-    description := "word-count",
-    publish / skip := true,
+    name := "beam-induction",
+    description := "Induction for Scala-based Apache Beam (SCIO) data pipelines",
     libraryDependencies ++= Seq(
       "com.spotify" %% "scio-core" % scioVersion,
       "com.spotify" %% "scio-test" % scioVersion % Test,
@@ -39,7 +57,19 @@ lazy val root: Project = project
       // optional dataflow runner
       // "org.apache.beam" % "beam-runners-google-cloud-dataflow-java" % beamVersion,
       "org.slf4j" % "slf4j-simple" % "1.7.25"
-    )
+    ),
+    pomIncludeRepository := { _ => false },
+    publishTo := {
+      val nexus = "https://oss.sonatype.org/"
+      if (isSnapshot.value)
+        Some("snapshots" at nexus + "content/repositories/snapshots")
+      else
+        Some("releases" at nexus + "service/local/staging/deploy/maven2")
+    },
+    publishMavenStyle := true,
+    publishConfiguration := publishConfiguration.value.withOverwrite(true),
+    publishLocalConfiguration := publishLocalConfiguration.value.withOverwrite(true),
+    cleanKeepFiles += target.value / "test-reports"
   )
   .enablePlugins(PackPlugin)
 
@@ -57,3 +87,4 @@ lazy val repl: Project = project
     publish / skip := true
   )
   .dependsOn(root)
+

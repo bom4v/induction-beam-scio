@@ -3,4 +3,7 @@ scala:
    - 2.12.2
 script:
    - sbt test
+   - sbt pack
+   - pushd target/pack && make install && popd
+   - $HOME/local/bin/word-count --output=wc && wc -l wc/*.txt
 

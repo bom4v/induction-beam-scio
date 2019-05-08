@@ -9,9 +9,6 @@ Induction to Apache Beam SCIO
 * [How to install Python virtual environments with Pyenv and `pipenv`](http://github.com/machine-learning-helpers/induction-python/tree/master/installation/virtual-env)
 
 # Overview
-
-**WIP**
-
 That repository aims to demonstrate the famous word count application,
 implemented with [Apache Beam SCIO](https://github.com/spotify/scio.g8),
 using a Scala application and Apache Spark as the execution engine.
@@ -127,69 +124,61 @@ To activate this project's virtualenv, run pipenv shell.
 Alternatively, run a command inside the virtualenv with pipenv run.
 ```
 
-# Use the command-line script
-* Download the application JAR artefact from a
-  [Maven repository](https://repo1.maven.org/maven2/):
-```bash
-$ wget https://oss.sonatype.org/content/groups/public/org/bom4v/ti/delta-tutorial_2.12/0.0.1-spark2.4/delta-tutorial_2.12-0.0.1-spark2.4.jar
-```
-
-* Launch the JAR application:
-```bash
-$ spark-submit --master yarn --deploy-mode client --class org.bom4v.ti.DeltaLakeTutorial delta-tutorial_2.12-0.0.1-spark2.4.jar
-```
-
 # Contribute to that project
 
 ## Simple test
-* Compile and package the SQL-based data extractor:
+* Compile and package the word count application:
 ```bash
 $ sbt 'set isSnapshot := true' compile package publishM2 publishLocal
 [info] Loading settings for project global-plugins from gpg.sbt ...
 [info] Loading global plugins from ~/.sbt/1.0/plugins
-[info] Loading settings for project induction-delta-lake-build from plugins.sbt ...
-[info] Loading project definition from ~/dev/infra/induction-delta-lake/project
-[info] Loading settings for project induction-delta-lake from build.sbt ...
-[info] Set current project to delta-tutorial (in build file:~/dev/infra/induction-delta-lake/)
+[info] Loading settings for project beam-induction-scio-build from plugins.sbt ...
+[info] Loading project definition from ~/dev/infra/beam-induction-scio/project
+[info] Loading settings for project root from build.sbt ...
+[info] Set current project to beam-induction (in build file:~/dev/infra/beam-induction-scio/)
 [info] Executing in batch mode. For better performance use sbt's shell
 [info] Defining isSnapshot
 [info] The new value will be used by makeIvyXmlConfiguration, makeIvyXmlLocalConfiguration and 5 others.
 [info] 	Run `last` for details.
 [info] Reapplying settings...
-[info] Set current project to delta-tutorial (in build file:~/dev/infra/induction-delta-lake/)
-[success] Total time: 1 s, completed Apr 25, 2019 6:59:10 PM
-[success] Total time: 0 s, completed Apr 25, 2019 6:59:10 PM
-[info] Packaging ~/dev/infra/induction-delta-lake/target/scala-2.12/delta-tutorial_2.12-0.0.1-spark2.4-sources.jar ...
+[info] Set current project to beam-induction (in build file:~/dev/infra/beam-induction-scio/)
+[info] Compiling 1 Scala source to ~/dev/infra/beam-induction-scio/target/scala-2.12/classes ...
+[info] Done compiling.
+[success] Total time: 7 s, completed May 8, 2019 6:40:03 PM
+[info] Packaging ~/dev/infra/beam-induction-scio/target/scala-2.12/beam-induction_2.12-0.0.1.jar ...
 [info] Done packaging.
-[info] Wrote ~/dev/infra/induction-delta-lake/target/scala-2.12/delta-tutorial_2.12-0.0.1-spark2.4.pom
-[info] Main Scala API documentation to ~/dev/infra/induction-delta-lake/target/scala-2.12/api...
+[success] Total time: 1 s, completed May 8, 2019 6:40:04 PM
+[info] Packaging ~/dev/infra/beam-induction-scio/target/scala-2.12/beam-induction_2.12-0.0.1-sources.jar ...
+[info] Done packaging.
+[info] Wrote ~/dev/infra/beam-induction-scio/target/scala-2.12/beam-induction_2.12-0.0.1.pom
+[info] Main Scala API documentation to ~/dev/infra/beam-induction-scio/target/scala-2.12/api...
 model contains 5 documentable templates
 [info] Main Scala API documentation successful.
-[info] Packaging ~/dev/infra/induction-delta-lake/target/scala-2.12/delta-tutorial_2.12-0.0.1-spark2.4-javadoc.jar ...
+[info] Packaging ~/dev/infra/beam-induction-scio/target/scala-2.12/beam-induction_2.12-0.0.1-javadoc.jar ...
 [info] Done packaging.
-[info] 	published delta-tutorial_2.12 to file:~/.m2/repository/org/bom4v/ti/delta-tutorial_2.12/0.0.1-spark2.4/delta-tutorial_2.12-0.0.1-spark2.4.pom
-[info] 	published delta-tutorial_2.12 to file:~/.m2/repository/org/bom4v/ti/delta-tutorial_2.12/0.0.1-spark2.4/delta-tutorial_2.12-0.0.1-spark2.4.jar
-[info] 	published delta-tutorial_2.12 to file:~/.m2/repository/org/bom4v/ti/delta-tutorial_2.12/0.0.1-spark2.4/delta-tutorial_2.12-0.0.1-spark2.4-sources.jar
-[info] 	published delta-tutorial_2.12 to file:~/.m2/repository/org/bom4v/ti/delta-tutorial_2.12/0.0.1-spark2.4/delta-tutorial_2.12-0.0.1-spark2.4-javadoc.jar
-[success] Total time: 3 s, completed Apr 25, 2019 6:59:13 PM
-[info] Wrote ~/dev/infra/induction-delta-lake/target/scala-2.12/delta-tutorial_2.12-0.0.1-spark2.4.pom
-[info] Main Scala API documentation to ~/dev/infra/induction-delta-lake/target/scala-2.12/api...
+[info] 	published beam-induction_2.12 to file:~/.m2/repository/org/bom4v/ti/beam-induction_2.12/0.0.1/beam-induction_2.12-0.0.1.pom
+[info] 	published beam-induction_2.12 to file:~/.m2/repository/org/bom4v/ti/beam-induction_2.12/0.0.1/beam-induction_2.12-0.0.1.jar
+[info] 	published beam-induction_2.12 to file:~/.m2/repository/org/bom4v/ti/beam-induction_2.12/0.0.1/beam-induction_2.12-0.0.1-sources.jar
+[info] 	published beam-induction_2.12 to file:~/.m2/repository/org/bom4v/ti/beam-induction_2.12/0.0.1/beam-induction_2.12-0.0.1-javadoc.jar
+[success] Total time: 2 s, completed May 8, 2019 6:40:06 PM
+[info] Wrote ~/dev/infra/beam-induction-scio/target/scala-2.12/beam-induction_2.12-0.0.1.pom
+[info] Main Scala API documentation to ~/dev/infra/beam-induction-scio/target/scala-2.12/api...
 model contains 5 documentable templates
 [info] Main Scala API documentation successful.
-[info] Packaging ~/dev/infra/induction-delta-lake/target/scala-2.12/delta-tutorial_2.12-0.0.1-spark2.4-javadoc.jar ...
+[info] Packaging ~/dev/infra/beam-induction-scio/target/scala-2.12/beam-induction_2.12-0.0.1-javadoc.jar ...
 [info] Done packaging.
-[info] :: delivering :: org.bom4v.ti#delta-tutorial_2.12;0.0.1-spark2.4 :: 0.0.1-spark2.4 :: integration :: Thu Apr 25 18:59:15 EEST 2019
-[info] 	delivering ivy file to ~/dev/infra/induction-delta-lake/target/scala-2.12/ivy-0.0.1-spark2.4.xml
-[info] 	published delta-tutorial_2.12 to ~/.ivy2/local/org.bom4v.ti/delta-tutorial_2.12/0.0.1-spark2.4/poms/delta-tutorial_2.12.pom
-[info] 	published delta-tutorial_2.12 to ~/.ivy2/local/org.bom4v.ti/delta-tutorial_2.12/0.0.1-spark2.4/jars/delta-tutorial_2.12.jar
-[info] 	published delta-tutorial_2.12 to ~/.ivy2/local/org.bom4v.ti/delta-tutorial_2.12/0.0.1-spark2.4/srcs/delta-tutorial_2.12-sources.jar
-[info] 	published delta-tutorial_2.12 to ~/.ivy2/local/org.bom4v.ti/delta-tutorial_2.12/0.0.1-spark2.4/docs/delta-tutorial_2.12-javadoc.jar
-[info] 	published ivy to ~/.ivy2/local/org.bom4v.ti/delta-tutorial_2.12/0.0.1-spark2.4/ivys/ivy.xml
-[success] Total time: 1 s, completed Apr 25, 2019 6:59:15 PM
+[info] :: delivering :: org.bom4v.ti#beam-induction_2.12;0.0.1 :: 0.0.1 :: integration :: Wed May 08 18:40:08 CEST 2019
+[info] 	delivering ivy file to ~/dev/infra/beam-induction-scio/target/scala-2.12/ivy-0.0.1.xml
+[info] 	published beam-induction_2.12 to ~/.ivy2/local/org.bom4v.ti/beam-induction_2.12/0.0.1/poms/beam-induction_2.12.pom
+[info] 	published beam-induction_2.12 to ~/.ivy2/local/org.bom4v.ti/beam-induction_2.12/0.0.1/jars/beam-induction_2.12.jar
+[info] 	published beam-induction_2.12 to ~/.ivy2/local/org.bom4v.ti/beam-induction_2.12/0.0.1/srcs/beam-induction_2.12-sources.jar
+[info] 	published beam-induction_2.12 to ~/.ivy2/local/org.bom4v.ti/beam-induction_2.12/0.0.1/docs/beam-induction_2.12-javadoc.jar
+[info] 	published ivy to ~/.ivy2/local/org.bom4v.ti/beam-induction_2.12/0.0.1/ivys/ivy.xml
+[success] Total time: 2 s, completed May 8, 2019 6:40:08 PM
 ```
 
 * The above command generates JAR artefacts (mainly
-  `delta-tutorial_2.12-0.0.1-spark2.4.jar`) locally in the project
+  `beam-induction_2.12-0.0.1.jar`) locally in the project
   `target` directory, as well as in the Maven and Ivy2 user repositories
   (`~/.m2` and `~/.ivy2` respectively).
 
@@ -199,194 +188,171 @@ model contains 5 documentable templates
 * Check that the artefacts have been produced
   + Locally (`package` command):
 ```bash
-$ ls -laFh target/scala-2.12/delta-tutorial_2.12-0.0.1-spark2.4.jar
--rw-r--r-- 1 user group 5.4K Apr 25 12:16 target/scala-2.12/delta-tutorial_2.12-0.0.1-spark2.4.jar
+$ ls -laFh target/scala-2.12/beam-induction_2.12-0.0.1.jar
+-rw-r--r--  1 user  group   4.7K May  8 18:40 target/scala-2.12/beam-induction_2.12-0.0.1.jar
 ```
 
   + In the local Maven repository (`publishM2` task):
 ```bash
-$ ls -laFh ~/.m2/repository/org/bom4v/ti/delta-tutorial_2.12/0.0.1-spark2.4/delta-tutorial_2.12-0.0.1-spark2.4.jar
--rw-r--r-- 1 user group 5.4K Apr 25 12:16 ~/.m2/repository/org/bom4v/ti/delta-tutorial_2.12/0.0.1-spark2.4/delta-tutorial_2.12-0.0.1-spark2.4.jar
+$ ls -laFh ~/.m2/repository/org/bom4v/ti/beam-induction_2.12/0.0.1/beam-induction_2.12-0.0.1.jar
+-rw-r--r--  1 user  group   4.7K May  8 18:40 ~/.m2/repository/org/bom4v/ti/beam-induction_2.12/0.0.1/beam-induction_2.12-0.0.1.jar
 ```
 
   + In the local Ivy2 repository (`publishLocal` task):
 ```bash
-$ ls -laFh ~/.ivy2/local/org.bom4v.ti/delta-tutorial_2.12/0.0.1-spark2.4/jars/delta-tutorial_2.12.jar
--rw-r--r-- 1 user group 5.4K Apr 25 12:16 ~/.ivy2/local/org.bom4v.ti/delta-tutorial_2.12/0.0.1-spark2.4/jars/delta-tutorial_2.12.jar
+$ ls -laFh ~/.ivy2/local/org.bom4v.ti/beam-induction_2.12/0.0.1/jars/beam-induction_2.12.jar
+-rw-r--r--  1 user  group   4.7K May  8 18:40 ~/.ivy2/local/org.bom4v.ti/beam-induction_2.12/0.0.1/jars/beam-induction_2.12.jar
 ```
 
 * Clean any previous data:
 ```bash
-$ rm -rf /tmp/delta-table
+$ rm -rf wc
 ```
 
 * Launch the job in the SBT JVM:
 ```bash
-$ sbt "runMain org.bom4v.ti.DeltaLakeTutorial"
+$ sbt "run --output=wc"
 [info] Loading settings for project global-plugins from gpg.sbt ...
 [info] Loading global plugins from ~/.sbt/1.0/plugins
-[info] Loading settings for project induction-delta-lake-build from plugins.sbt ...
-[info] Loading project definition from ~/dev/infra/induction-delta-lake/project
-[info] Loading settings for project induction-delta-lake from build.sbt ...
-[info] Set current project to delta-tutorial (in build file:~/dev/infra/induction-delta-lake/)
-[info] Running org.bom4v.ti.DeltaLakeTutorial 
-Spark: 2.4.2  -  Scala: version 2.12.8
-19/04/25 18:50:35 INFO org.apache.parquet.hadoop.codec.CodecConfig: Compression: SNAPPY
-...
-Latest version of the data:
-+---+
-| id|
-+---+
-|  7|
-|  8|
-|  5|
-|  9|
-|  6|
-+---+
-
-Older version of the data:
-+---+
-| id|
-+---+
-|  1|
-|  0|
-|  3|
-|  2|
-|  4|
-+---+
-
-[success] Total time: 29 s, completed Apr 25, 2019 6:50:51 PM
+[info] Loading settings for project beam-induction-scio-build from plugins.sbt ...
+[info] Loading project definition from ~/dev/infra/beam-induction-scio/project
+[info] Loading settings for project root from build.sbt ...
+[info] Set current project to beam-induction (in build file:~/dev/infra/beam-induction-scio/)
+[info] Running org.bom4v.ti.WordCount --output=wc
+[run-main-0] INFO org.apache.beam.sdk.io.FileBasedSource - Filepattern gs://dataflow-samples/shakespeare/kinglear.txt matched 1 files with total size 157283
+[run-main-0] INFO org.apache.beam.sdk.io.FileBasedSource - Splitting filepattern gs://dataflow-samples/shakespeare/kinglear.txt into bundles of size 13106 took 163 ms and produced 1 files and 12 bundles
+[direct-runner-worker] INFO org.apache.beam.sdk.io.WriteFiles - Opening writer 030e9a82-6a94-41c1-b25c-efafa2522c78 for window org.apache.beam.sdk.transforms.windowing.GlobalWindow@1a577354 pane PaneInfo{isFirst=true, isLast=true, timing=ON_TIME, index=0, onTimeIndex=0} destination null
+[direct-runner-worker] INFO org.apache.beam.sdk.io.WriteFiles - Opening writer ed967016-924a-4f07-9b13-b8c5f7cfb89e for window org.apache.beam.sdk.transforms.windowing.GlobalWindow@1a577354 pane PaneInfo{isFirst=true, isLast=true, timing=ON_TIME, index=0, onTimeIndex=0} destination null
+[direct-runner-worker] INFO org.apache.beam.sdk.io.WriteFiles - Opening writer 353331fe-3a51-40da-83a0-4bb1176cc547 for window org.apache.beam.sdk.transforms.windowing.GlobalWindow@1a577354 pane PaneInfo{isFirst=true, isLast=true, timing=ON_TIME, index=0, onTimeIndex=0} destination null
+[direct-runner-worker] INFO org.apache.beam.sdk.io.WriteFiles - Opening writer 84f30817-0f8a-4ded-82c3-adbc422696e1 for window org.apache.beam.sdk.transforms.windowing.GlobalWindow@1a577354 pane PaneInfo{isFirst=true, isLast=true, timing=ON_TIME, index=0, onTimeIndex=0} destination null
+[direct-runner-worker] INFO org.apache.beam.sdk.io.WriteFiles - Opening writer 28811dc7-e814-44e1-82ca-b3ef59862254 for window org.apache.beam.sdk.transforms.windowing.GlobalWindow@1a577354 pane PaneInfo{isFirst=true, isLast=true, timing=ON_TIME, index=0, onTimeIndex=0} destination null
+[direct-runner-worker] INFO org.apache.beam.sdk.io.FileBasedSink$Writer - Successfully wrote temporary file ~/dev/infra/beam-induction-scio/wc/.temp-beam-2019-05-08_16-49-08-1/353331fe-3a51-40da-83a0-4bb1176cc547
+[direct-runner-worker] INFO org.apache.beam.sdk.io.FileBasedSink$Writer - Successfully wrote temporary file ~/dev/infra/beam-induction-scio/wc/.temp-beam-2019-05-08_16-49-08-1/030e9a82-6a94-41c1-b25c-efafa2522c78
+[direct-runner-worker] INFO org.apache.beam.sdk.io.FileBasedSink$Writer - Successfully wrote temporary file ~/dev/infra/beam-induction-scio/wc/.temp-beam-2019-05-08_16-49-08-1/ed967016-924a-4f07-9b13-b8c5f7cfb89e
+[direct-runner-worker] INFO org.apache.beam.sdk.io.FileBasedSink$Writer - Successfully wrote temporary file ~/dev/infra/beam-induction-scio/wc/.temp-beam-2019-05-08_16-49-08-1/84f30817-0f8a-4ded-82c3-adbc422696e1
+[direct-runner-worker] INFO org.apache.beam.sdk.io.FileBasedSink$Writer - Successfully wrote temporary file ~/dev/infra/beam-induction-scio/wc/.temp-beam-2019-05-08_16-49-08-1/28811dc7-e814-44e1-82ca-b3ef59862254
+[direct-runner-worker] INFO org.apache.beam.sdk.io.WriteFiles - Finalizing 5 file results
+[direct-runner-worker] INFO org.apache.beam.sdk.io.FileBasedSink - Finalizing for destination null num shards 5.
+[direct-runner-worker] INFO org.apache.beam.sdk.io.FileBasedSink - Will copy temporary file FileResult{tempFilename=~/dev/infra/beam-induction-scio/wc/.temp-beam-2019-05-08_16-49-08-1/353331fe-3a51-40da-83a0-4bb1176cc547, shard=0, window=org.apache.beam.sdk.transforms.windowing.GlobalWindow@1a577354, paneInfo=PaneInfo{isFirst=true, isLast=true, timing=ON_TIME, index=0, onTimeIndex=0}} to final location ~/dev/infra/beam-induction-scio/wc/part-00000-of-00005.txt
+[direct-runner-worker] INFO org.apache.beam.sdk.io.FileBasedSink - Will copy temporary file FileResult{tempFilename=~/dev/infra/beam-induction-scio/wc/.temp-beam-2019-05-08_16-49-08-1/030e9a82-6a94-41c1-b25c-efafa2522c78, shard=4, window=org.apache.beam.sdk.transforms.windowing.GlobalWindow@1a577354, paneInfo=PaneInfo{isFirst=true, isLast=true, timing=ON_TIME, index=0, onTimeIndex=0}} to final location ~/dev/infra/beam-induction-scio/wc/part-00004-of-00005.txt
+[direct-runner-worker] INFO org.apache.beam.sdk.io.FileBasedSink - Will copy temporary file FileResult{tempFilename=~/dev/infra/beam-induction-scio/wc/.temp-beam-2019-05-08_16-49-08-1/84f30817-0f8a-4ded-82c3-adbc422696e1, shard=3, window=org.apache.beam.sdk.transforms.windowing.GlobalWindow@1a577354, paneInfo=PaneInfo{isFirst=true, isLast=true, timing=ON_TIME, index=0, onTimeIndex=0}} to final location ~/dev/infra/beam-induction-scio/wc/part-00003-of-00005.txt
+[direct-runner-worker] INFO org.apache.beam.sdk.io.FileBasedSink - Will copy temporary file FileResult{tempFilename=~/dev/infra/beam-induction-scio/wc/.temp-beam-2019-05-08_16-49-08-1/ed967016-924a-4f07-9b13-b8c5f7cfb89e, shard=1, window=org.apache.beam.sdk.transforms.windowing.GlobalWindow@1a577354, paneInfo=PaneInfo{isFirst=true, isLast=true, timing=ON_TIME, index=0, onTimeIndex=0}} to final location ~/dev/infra/beam-induction-scio/wc/part-00001-of-00005.txt
+[direct-runner-worker] INFO org.apache.beam.sdk.io.FileBasedSink - Will copy temporary file FileResult{tempFilename=~/dev/infra/beam-induction-scio/wc/.temp-beam-2019-05-08_16-49-08-1/28811dc7-e814-44e1-82ca-b3ef59862254, shard=2, window=org.apache.beam.sdk.transforms.windowing.GlobalWindow@1a577354, paneInfo=PaneInfo{isFirst=true, isLast=true, timing=ON_TIME, index=0, onTimeIndex=0}} to final location ~/dev/infra/beam-induction-scio/wc/part-00002-of-00005.txt
+[direct-runner-worker] INFO org.apache.beam.sdk.io.FileBasedSink - Will remove known temporary file ~/dev/infra/beam-induction-scio/wc/.temp-beam-2019-05-08_16-49-08-1/353331fe-3a51-40da-83a0-4bb1176cc547
+[direct-runner-worker] INFO org.apache.beam.sdk.io.FileBasedSink - Will remove known temporary file ~/dev/infra/beam-induction-scio/wc/.temp-beam-2019-05-08_16-49-08-1/84f30817-0f8a-4ded-82c3-adbc422696e1
+[direct-runner-worker] INFO org.apache.beam.sdk.io.FileBasedSink - Will remove known temporary file ~/dev/infra/beam-induction-scio/wc/.temp-beam-2019-05-08_16-49-08-1/28811dc7-e814-44e1-82ca-b3ef59862254
+[direct-runner-worker] INFO org.apache.beam.sdk.io.FileBasedSink - Will remove known temporary file ~/dev/infra/beam-induction-scio/wc/.temp-beam-2019-05-08_16-49-08-1/ed967016-924a-4f07-9b13-b8c5f7cfb89e
+[direct-runner-worker] INFO org.apache.beam.sdk.io.FileBasedSink - Will remove known temporary file ~/dev/infra/beam-induction-scio/wc/.temp-beam-2019-05-08_16-49-08-1/030e9a82-6a94-41c1-b25c-efafa2522c78
+[direct-runner-worker] WARN org.apache.beam.sdk.io.FileBasedSink - Failed to match temporary files under: [~/dev/infra/beam-induction-scio/wc/.temp-beam-2019-05-08_16-49-08-1/].
+[success] Total time: 15 s, completed May 8, 2019 6:49:17 PM
 ```
 
-* It generates parquet files in the `/tmp/delta-table`:
+* It generates key-value pairs (representing the counts for every word
+  in the [input text](https://github.com/cs109/2015/blob/master/Lectures/Lecture15b/sparklect/shakes/kinglear.txt))
+  as text files in the `wc` directory:
 ```bash
-$ ls -laFh /tmp/delta-table
-total 192
-drwxr-xr-x  27 user  group   864B Apr 25 19:06 ./
-drwxrwxrwt  13 root     group   416B Apr 25 19:07 ../
--rw-r--r--   1 user  group    12B Apr 25 19:06 .part-00000-7e074f5c-b50b-417a-b001-b137eacd13ec-c000.snappy.parquet.crc
-[...]
-e-07bdab889fdc-c000.snappy.parquet.crc
--rw-r--r--   1 user  group    12B Apr 25 19:06 .part-00011-e9ffc871-42d5-402b-bf26-1bcd63bc2e9e-c000.snappy.parquet.crc
-drwxr-xr-x   6 user  group   192B Apr 25 19:06 _delta_log/
--rw-r--r--   1 user  group   263B Apr 25 19:06 part-00000-7e074f5c-b50b-417a-b001-b137eacd13ec-c000.snappy.parquet
-[...]
--rw-r--r--   1 user  group   423B Apr 25 19:06 part-00011-e9ffc871-42d5-402b-bf26-1bcd63bc2e9e-c000.snappy.parquet
+$ wc -l wc/part-0000*.txt
+     955 wc/part-00000-of-00005.txt
+     959 wc/part-00001-of-00005.txt
+     956 wc/part-00002-of-00005.txt
+     957 wc/part-00003-of-00005.txt
+     957 wc/part-00004-of-00005.txt
+    4784 total
 ```
 
-* Launch the job with `spark-submit`
-  + In local mode (for instance, on a laptop; that mode may not always work
-    on the Spark/Hadoop clusters):
+* Run the tests with `sbt test`:
 ```bash
-$ pipenv run spark-submit --packages io.delta:delta-core_2.12:0.1.0 --master local --class org.bom4v.ti.DeltaLakeTutorial target/scala-2.12/delta-tutorial_2.12-0.0.1-spark2.4.jar
-2019-02-18 20:22:46 INFO  SparkContext:54 - Running Spark version 2.4.2
-2019-02-18 20:22:46 INFO  SparkContext:54 - Submitted application: StandaloneQuerylauncher
-...
-Spark: 2.4.2
-Scala: version 2.12.8
-...
-2019-02-18 20:22:47 INFO  SparkContext:54 - Successfully stopped SparkContext
-2019-02-18 20:22:47 INFO  ShutdownHookManager:54 - Shutdown hook called
-...
+$ sbt test
+[info] Loading settings for project global-plugins from gpg.sbt ...
+[info] Loading global plugins from ~/.sbt/1.0/plugins
+[info] Loading settings for project beam-induction-scio-build from plugins.sbt ...
+[info] Loading project definition from ~/dev/infra/beam-induction-scio/project
+[info] Loading settings for project root from build.sbt ...
+[info] Set current project to beam-induction (in build file:~/dev/infra/beam-induction-scio/)
+[info] WordCountTest:
+[info] WordCount
+[info] - should work
+[info] ScalaTest
+[info] Run completed in 5 seconds, 201 milliseconds.
+[info] Total number of tests run: 1
+[info] Suites: completed 1, aborted 0
+[info] Tests: succeeded 1, failed 0, canceled 0, ignored 0, pending 0
+[info] All tests passed.
+[info] Passed: Total 1, Failed 0, Errors 0, Passed 1
+[success] Total time: 8 s, completed May 8, 2019 7:01:32 PM
 ```
-
-  + In Yarn cluster client mode with the standalone version (that method
-    is basically the same as above):
+* Build and install a launcher script:
 ```bash
-$ pipenv run spark-submit --packages io.delta:delta-core_2.12:0.1.0 --num-executors 1 --executor-memory 512m --master yarn --deploy-mode client --class org.bom4v.ti.DeltaLakeTutorial target/scala-2.12/delta-tutorial_2.12-0.0.1-spark2.4.jar
-...
-Spark: 2.4.2
-Scala: version 2.12.8
-...
+$ sbt pack
+$ pushd target/pack && make install && popd
+~/dev/infra/beam-induction-scio/target/pack ~/dev/infra/beam-induction-scio
+Clean up ~/local/beam-induction/beam-induction-0.0.1/lib folder
+if [ -d "~/local/beam-induction/beam-induction-0.0.1/lib" ]; then rm -rf "~/local/beam-induction/beam-induction-0.0.1/lib"; fi
+install -d "~/local/beam-induction/beam-induction-0.0.1"
+cp -pr ./* "~/local/beam-induction/beam-induction-0.0.1"
+ln -sfn "beam-induction-0.0.1" "~/local/beam-induction/current"
+install -d "~/local/bin"
+ln -sf "../beam-induction/current/bin/word-count" "~/local/bin/word-count"
+~/dev/infra/beam-induction-scio
 ```
 
-* Playing with Python on PySpark:
+* Launch the job with the wrapper script:
 ```bash
-$ rm -rf /tmp/delta-table
-$ pipenv run pyspark --packages io.delta:delta-core_2.12:0.1.0
-Python 2.7.16 (default, Mar  4 2019, 09:01:38) 
-[GCC 4.2.1 Compatible Apple LLVM 10.0.0 (clang-1000.11.45.5)] on darwin
-Type "help", "copyright", "credits" or "license" for more information.
-2019-04-25 19:11:59 WARN  NativeCodeLoader:62 - Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
-Setting default log level to "WARN".
-To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
-Welcome to
-      ____              __
-     / __/__  ___ _____/ /__
-    _\ \/ _ \/ _ `/ __/  '_/
-   /__ / .__/\_,_/_/ /_/\_\   version 2.4.0
-      /_/
-
-Using Python version 2.7.16 (default, Mar  4 2019 09:01:38)
-SparkSession available as 'spark'.
->>> data = spark.range(0, 5)
->>> data.write.format("delta").save("/tmp/delta-table")
->>> data = spark.range(5, 10)
->>> data.write.format("delta").mode("overwrite").save("/tmp/delta-table")
->>> df = spark.read.format("delta").load("/tmp/delta-table")
->>> df.show()
-+---+
-| id|
-+---+
-|  7|
-|  8|
-|  5|
-|  9|
-|  6|
-+---+
->>> df = spark.read.format("delta").option("versionAsOf", 0).load("/tmp/delta-table")
->>> df.show()
-+---+
-| id|
-+---+
-|  1|
-|  0|
-|  3|
-|  2|
-|  4|
-+---+
->>> quit()
+$ ~/local/bin/word-count --output=wc
+$ wc -l wc/part-0000*.txt
+    1597 wc/part-00000-of-00003.txt
+    1594 wc/part-00001-of-00003.txt
+    1593 wc/part-00002-of-00003.txt
+    4784 total
 ```
 
-## Features:
-
-This project comes with number of preconfigured features, including:
-
-### sbt-pack
-
-Use `sbt-pack` instead of `sbt-assembly` to:
- * reduce build time
- * enable efficient dependency caching
- * reduce job submission time
-
-To build package run:
-
-```
-sbt pack
-```
-
-### Testing
-
-This template comes with an example of a test, to run tests:
-
-```
-sbt test
+* Publish the signed packages (into
+  [Maven Central repsoitory](https://repo.maven.apache.org/maven2/org/bom4v/ti/)):
+```bash
+$ sbt publishSigned
+[info] Loading settings for project global-plugins from gpg.sbt ...
+[info] Loading global plugins from ~/.sbt/1.0/plugins
+[info] Loading settings for project beam-induction-scio-build from plugins.sbt ...
+[info] Loading project definition from ~/dev/infra/beam-induction-scio/project
+[info] Loading settings for project root from build.sbt ...
+[info] Set current project to beam-induction (in build file:~/dev/infra/beam-induction-scio/)
+[info] Wrote ~/dev/infra/beam-induction-scio/target/scala-2.12/beam-induction_2.12-0.0.1.pom
+Please enter PGP passphrase (or ENTER to abort): *********
+[info] 	published beam-induction_2.12 to https://oss.sonatype.org/service/local/staging/deploy/maven2/org/bom4v/ti/beam-induction_2.12/0.0.1/beam-induction_2.12-0.0.1.pom.asc
+[info] 	published beam-induction_2.12 to https://oss.sonatype.org/service/local/staging/deploy/maven2/org/bom4v/ti/beam-induction_2.12/0.0.1/beam-induction_2.12-0.0.1.jar
+[info] 	published beam-induction_2.12 to https://oss.sonatype.org/service/local/staging/deploy/maven2/org/bom4v/ti/beam-induction_2.12/0.0.1/beam-induction_2.12-0.0.1-sources.jar.asc
+[info] 	published beam-induction_2.12 to https://oss.sonatype.org/service/local/staging/deploy/maven2/org/bom4v/ti/beam-induction_2.12/0.0.1/beam-induction_2.12-0.0.1.jar.asc
+[info] 	published beam-induction_2.12 to https://oss.sonatype.org/service/local/staging/deploy/maven2/org/bom4v/ti/beam-induction_2.12/0.0.1/beam-induction_2.12-0.0.1-javadoc.jar.asc
+[info] 	published beam-induction_2.12 to https://oss.sonatype.org/service/local/staging/deploy/maven2/org/bom4v/ti/beam-induction_2.12/0.0.1/beam-induction_2.12-0.0.1-sources.jar
+[info] 	published beam-induction_2.12 to https://oss.sonatype.org/service/local/staging/deploy/maven2/org/bom4v/ti/beam-induction_2.12/0.0.1/beam-induction_2.12-0.0.1-javadoc.jar
+[info] 	published beam-induction_2.12 to https://oss.sonatype.org/service/local/staging/deploy/maven2/org/bom4v/ti/beam-induction_2.12/0.0.1/beam-induction_2.12-0.0.1.pom
+[success] Total time: 39 s, completed May 8, 2019 6:51:56 PM
 ```
 
-### Scala style
-
+* Scala style
 Find style configuration in `scalastyle-config.xml`. To enforce style run:
-
+```bash
+$ sbt scalastyle
+[info] Loading settings for project global-plugins from gpg.sbt ...
+[info] Loading global plugins from ~/.sbt/1.0/plugins
+[info] Loading settings for project beam-induction-scio-build from plugins.sbt ...
+[info] Loading project definition from ~/dev/infra/beam-induction-scio/project
+[info] Loading settings for project root from build.sbt ...
+[info] Set current project to beam-induction (in build file:~/dev/infra/beam-induction-scio/)
+[info] scalastyle using config ~/dev/infra/beam-induction-scio/scalastyle-config.xml
+[info] scalastyle Processed 1 file(s)
+[info] scalastyle Found 0 errors
+[info] scalastyle Found 0 warnings
+[info] scalastyle Found 0 infos
+[info] scalastyle Finished in 4 ms
+[success] created output: ~/dev/infra/beam-induction-scio/target
+[success] Total time: 1 s, completed May 8, 2019 7:03:56 PM
 ```
-sbt scalastyle
-```
 
-### REPL
-
+* REPL
 To experiment with current codebase in [Scio REPL](https://github.com/spotify/scio/wiki/Scio-REPL)
 simply:
-
-```
-sbt repl/run
+```bash
+$ sbt repl/run
 ```
 
