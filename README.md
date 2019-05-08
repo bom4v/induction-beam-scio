@@ -1,7 +1,7 @@
 Induction to Apache Beam SCIO
 =============================
 
-[![Build Status](https://travis-ci.com/opentraveldata/induction-beam-scio.svg?branch=master)](https://travis-ci.com/https://travis-ci.com/bom4v/induction-beam-scio)
+[![Build Status](https://travis-ci.com/bom4v/induction-beam-scio.svg?branch=master)](https://travis-ci.com/bom4v/induction-beam-scio)
 
 # References
 * [This README](https://github.com/bom4v/induction-beam-scio)
